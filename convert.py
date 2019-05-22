@@ -45,7 +45,7 @@ def convert_and_save_page(page):
   with open(output, 'w') as f:
       f.write(md.encode('utf8'))
 
-with open('README.md', 'r') as file:
+with open('chapters.md', 'r') as file:
   index = file.read()
   for m in re.finditer("\(([^\)]+).md\)", index):
     convert_and_save_page(m.group(1))
