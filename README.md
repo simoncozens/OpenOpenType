@@ -1,4 +1,8 @@
-# OpenOpenType: The OpenType spec, liberated
+# OpenOpenType: Tools for reformatting the OpenType spec
+
+The OpenType font specification is extremely useful for font developers but is not necessarily produced in the most accessible or readable format.
+
+This repository does not contain any of the copyrighted material of the specification itself but consists of scripts to help users view the spec in more convenient formats.
 
 * OpenType spec
   * Overview
