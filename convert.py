@@ -3,7 +3,7 @@ import urllib
 import re
 import sys
 import wget
-import html2markdown
+import html2text
 import os
 
 if not os.path.exists("images"):
@@ -13,17 +13,11 @@ def convert_and_save_page(page):
   baseurl = "https://docs.microsoft.com/en-gb/typography/opentype/spec/"
   output = page+".md"
   d = pq(url=baseurl + page, opener=lambda url: urllib.urlopen(url).read())
-  md = html2markdown.convert(d("#main").html())
-  md = re.sub('<h1[^>]*>(.*)</h1>', r"# \1", md)
-  md = re.sub('<h2[^>]*>(.*)</h2>', r"## \1", md)
-  md = re.sub('<h3[^>]*>(.*)</h3>', r"### \1", md)
-  md = re.sub('<a data-linktype="relative-path" href="([^#"]+)(#?[^"]*)">([^<]+)</a>',r'[\3](\1.md\2)',md)
-  md = re.sub('<a data-linktype="self-bookmark" href="(#?[^"]*)">([^<]+)</a>',r'[\2](\1)',md)
+  html = d("#main").html()
   r = re.compile('<ul.*<content> -->', re.DOTALL)
-  md = re.sub(r,'',md)
-  md = re.sub('<!--.*-->','',md)
-  r = re.compile('\n[\n\s]+', re.MULTILINE)
-  md = re.sub(r,'\n\n',md)
+  html = re.sub(r,'',html)
+
+  md = html2text.html2text(html)
 
   for m in re.finditer('<img.*src="([^"]+)"',md):
     image = m.group(1)
@@ -38,4 +32,3 @@ with open('README.md', 'r') as file:
   index = file.read()
   for m in re.finditer("\(([^\)]+).md\)", index):
     convert_and_save_page(m.group(1))
-    
