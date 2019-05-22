@@ -1,10 +1,9 @@
 CHAPTERS := $(shell perl listchapters.pl)
 
-fullspec-a4.pdf: fullspec.md
-	pandoc --pdf-engine=xelatex --template=template.tex -o fullspec-a4.pdf fullspec.md
+all: fullspec.pdf fullspec.epub
 
-server: $(CHAPTERS)
-	jekyll serve
+# server: $(CHAPTERS)
+# 	jekyll serve
 
 fullspec.md: $(CHAPTERS) opentype.yaml
 	cat opentype.yaml $(CHAPTERS) > fullspec.md
@@ -16,4 +15,7 @@ clean:
 	rm -f $(CHAPTERS)
 
 %.pdf: %.md
-	pandoc --pdf-engine=xelatex -o $@ $<
+	pandoc --template=template.tex --pdf-engine=xelatex -o $@ $<
+
+%.epub: %.md
+	pandoc -o $@ $<
