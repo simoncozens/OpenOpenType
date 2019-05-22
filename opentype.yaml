@@ -1,0 +1,9 @@
+---
+documentclass: book
+title: The OpenType Standard
+geometry:
+  - margin = 1in
+toc: true
+numbersections: true
+---
+
