@@ -14,15 +14,29 @@ def convert_and_save_page(page):
   output = page+".md"
   d = pq(url=baseurl + page, opener=lambda url: urllib.urlopen(url).read())
   html = d("#main").html()
+
   r = re.compile('<ul.*<content> -->', re.DOTALL)
   html = re.sub(r,'',html)
 
-  md = html2text.html2text(html)
-
-  for m in re.finditer('<img.*src="([^"]+)"',md):
+  for m in re.finditer('<img.*src="([^"]+)"',html):
     image = m.group(1)
     print("Fetching image "+image)
     wget.download(baseurl+image, image)
+
+  md = html2text.html2text(html)
+
+  # Fix up tables. If we are inside a table, we cannot have a non-table line
+  def replacer(match):
+    m1 = match.group(1)
+    m2 = match.group(2)
+    m3 = match.group(3)
+    if re.match("\S", m2):
+      m2 = re.sub("\n"," ",m2)
+      return m1 + " " + m2 + "\n"
+    else:
+      return m1 + "\n" + m2 + "\n"
+
+  md = re.sub('(.*\|.*)\n([^\|]+)\n(?=(.*\|.*))', replacer, md)
 
   print("Writing "+output)
   with open(output, 'w') as f:
