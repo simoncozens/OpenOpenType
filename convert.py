@@ -4,6 +4,10 @@ import re
 import sys
 import wget
 import html2markdown
+import os
+
+if not os.path.exists("images"):
+  os.mkdir("images")
 
 def convert_and_save_page(page):
   baseurl = "https://docs.microsoft.com/en-gb/typography/opentype/spec/"
