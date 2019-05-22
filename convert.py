@@ -38,6 +38,9 @@ def convert_and_save_page(page):
 
   md = re.sub('(.*\|.*)\n([^\|]+)\n(?=(.*\|.*))', replacer, md)
 
+  # Fix up hex encoding
+  md = re.sub(r'((?:\\x[0-9A-F]+)+)', r'`\1`', md)
+
   print("Writing "+output)
   with open(output, 'w') as f:
       f.write(md.encode('utf8'))
