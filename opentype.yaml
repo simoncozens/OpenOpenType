@@ -5,5 +5,8 @@ geometry:
   - margin = 1in
 toc: true
 numbersections: true
+mainfont: Noto Serif
+sansfont: Noto Sans
+linestretch: 1.2
 ---
 

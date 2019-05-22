@@ -1,6 +1,6 @@
 CHAPTERS := $(shell perl listchapters.pl)
 
-fullspec-a4.pdf: $(CHAPTERS)
+fullspec-a4.pdf: fullspec.md
 	pandoc --pdf-engine=xelatex -o fullspec-a4.pdf fullspec.md
 
 server: $(CHAPTERS)
