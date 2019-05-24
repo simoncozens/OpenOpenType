@@ -23,6 +23,13 @@ def convert_and_save_page(page):
     print("Fetching image "+image)
     wget.download(baseurl+image, image)
 
+  # Fix up figures
+  r = re.compile('^<img src="([^"]+)"[^>]+>', re.MULTILINE)
+  html = re.sub(r, r'<img src="\1">\n', html) # Strip alt tags from things which are not figures
+
+  r = re.compile('<figure><img.*src="([^"]+)".*<figcaption>(?:Figure:\s*)*(.*?)\s*</figcaption></figure>')
+  html = re.sub(r, r'<img src="\1" alt="\2">\n', html)
+
   md = html2text.html2text(html)
 
   # Fix up tables. If we are inside a table, we cannot have a non-table line
