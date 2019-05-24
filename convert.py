@@ -20,8 +20,11 @@ def convert_and_save_page(page):
 
   for m in re.finditer('<img.*src="([^"]+)"',html):
     image = m.group(1)
-    print("Fetching image "+image)
-    wget.download(baseurl+image, image)
+    if not os.path.exists(image):
+      print("Fetching image "+image)
+      wget.download(baseurl+image, image)
+    else:
+      print(image+" already downloaded")
 
   # Fix up figures
   r = re.compile('^<img src="([^"]+)"[^>]+>', re.MULTILINE)
