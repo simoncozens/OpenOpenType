@@ -12,12 +12,19 @@ To install the required Python packages:
 > pip install -r requirements.txt
 ```
 
+If you want to use Jekyll to format the spec as a web site, you will also need to install the required Ruby packages:
+
+```
+> bundle install
+```
+
 You will also need a copy of [pandoc](https://pandoc.org) installed to convert between document formats; this can normally be installed with your distribution's package manager: `apt-get install pandoc`, `brew install pandoc`, or local equivalent.
 
 ## Make targets
 
 After installing the requirement, you can now use `make` to perform the reformatting:
 
+* `make server` will build and serve the spec as a static web site.
 * `fullspec.md` converts the whole spec to Markdown.
 * `fullspec.pdf` will produce the whole spec as a 1000+ page PDF file.
 * `fullspec.epub` will produce the whole spec as an EPUB file.

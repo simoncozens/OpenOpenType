@@ -53,6 +53,8 @@ def convert_and_save_page(page):
 
   print("Writing "+output)
   with open(output, 'w') as f:
+      if output == "overview.md": # Yukky special case for front page
+        f.write("---\nredirect_from: \"/\"\n---\n\n")
       f.write(md.encode('utf8'))
 
 with open('chapters.md', 'r') as file:
