@@ -1,0 +1,7 @@
+*.md
+!chapters.md
+!README.md
+*.tex
+images/
+*.pdf
+*.epub
