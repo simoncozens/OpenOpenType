@@ -4,6 +4,7 @@ title: The OpenType Standard
 geometry:
   - margin = 1in
 toc: true
+toc-depth: 1
 numbersections: true
 mainfont: Noto Serif
 sansfont: Noto Sans
