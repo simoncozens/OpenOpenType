@@ -4,7 +4,19 @@ The OpenType font specification is extremely useful for font developers but is n
 
 This repository does not contain any of the copyrighted material of the specification itself but consists of scripts to help users view the spec in more convenient formats.
 
+## Installation
+
+To install the required Python packages:
+
+```
+> pip install -r requirements.txt
+```
+
+You will also need a copy of [pandoc](https://pandoc.org) installed to convert between document formats; this can normally be installed with your distribution's package manager: `apt-get install pandoc`, `brew install pandoc`, or local equivalent.
+
 ## Make targets
+
+After installing the requirement, you can now use `make` to perform the reformatting:
 
 * `fullspec.md` converts the whole spec to Markdown.
 * `fullspec.pdf` will produce the whole spec as a 1000+ page PDF file.
