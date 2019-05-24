@@ -318,7 +318,11 @@ $endif$
 \fancyhead[CE]{\iffloatpage{}{\SS@sectfont \small \leftmark}}
 \fancyhead[CO]{\iffloatpage{}{\SS@sectfont \small \nouppercase{\rightmark}}}
 \fancyfoot[C]{\iffloatpage{}{\SS@sectfont \thepage}}
+\makeatletter
+\@ifundefined{chapter}{}{
 \renewcommand\chaptermark[1]{\markboth{\MakeUppercase{#1}}{}}
+}
+\makeatother
 \renewcommand{\headrulewidth}{\iffloatpage{0pt}{0.5pt}}
 \floatstyle{ruled}
 \usepackage{sectsty}
