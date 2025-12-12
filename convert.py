@@ -56,6 +56,10 @@ def convert_and_save_page(page):
     # Fix up hex encoding
     md = re.sub(r"((?:\\x[0-9A-F]+)+)", r"`\1`", md)
 
+    # Strip Microsoft Learn UI cruft
+    md = re.sub(r"^Table of contents.*?(?=^# )", "", md, flags=re.DOTALL | re.MULTILINE)
+    md = re.sub(r"^Feedback\n+Summarize this article for me\n+", "", md, flags=re.MULTILINE)
+
     print("Writing " + output)
     with open(output, "w", encoding="utf-8") as f:
         if output == "overview.md":  # Yukky special case for front page
