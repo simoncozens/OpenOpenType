@@ -11,7 +11,7 @@ if not os.path.exists("images"):
 
 
 def convert_and_save_page(page):
-    baseurl = "https://docs.microsoft.com/en-gb/typography/opentype/spec/"
+    baseurl = "https://learn.microsoft.com/en-gb/typography/opentype/spec/"
     output = page + ".md"
     d = pq(url=baseurl + page, opener=lambda url: urllib.request.urlopen(url).read())
     html = d("#main").html()
