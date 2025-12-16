@@ -83,20 +83,10 @@
 * Appendices
   * [Recommendations](recom.md)
   * [TrueType fundamentals](ttch01.md)
-  * TrueType instruction set
-    * [TrueType instruction set](ttinst.md)
+  * TrueType instructions
     * [Instructing TrueType Glyphs](tt_instructing_glyphs.md)
     * [The TrueType Instruction Set](tt_instructions.md)
     * [Graphics State Summary](tt_graphics_state.md)
-    * [OpenType mirroring pairs list](ompl.md)
-    * [Adobe technical note: compact font format specification](cffspec.md)
-    * [Adobe technical note: type 2 charstring format](charstr2.md)
-    * [CFF2 charString format](cff2charstr.md)
-  * WGL4.0 character set
-    * [WGL4.0 character set](wgl4.md)
-    * [Unicode range U+0020 through U+00BB](wgl4b.md)
-    * [Unicode range U+00BC through U+017E](wgl4c.md)
-    * [Unicode range U+017F through U+1EF3](wgl4d.md)
-    * [Unicode range U+2013 through U+FB02](wgl4e.md)
-  * [Euro currency symbol](euro.md)
+  * [OpenType mirroring pairs list](ompl.md)
+  * [Comparison of glyf, CFF, and CFF2 tables](glyphformatcomparison.md)
   * [Change log](changes.md)
